@@ -1,0 +1,11 @@
+.ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+}
+
+.ul li a {
+  color: green;
+  text-decoration: none;
+  font-weight: bold;
+}

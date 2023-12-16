@@ -1,0 +1,33 @@
+.nosotros {
+  background: green;
+  display: flex;
+  padding: 1rem 5rem;
+  position: relative;
+  margin-bottom: 6rem;
+}
+.info {
+  width: 50%;
+  color: white;
+}
+.h2 {
+  color: yellow;
+  margin: 0;
+}
+.h3 {
+  margin: 0;
+}
+p {
+  font-size: 0.8rem;
+}
+
+.img {
+  width: 250px;
+  height: 250px;
+  background-image: url("https://forbes.pe/_next/image?url=https%3A%2F%2Fcdn.forbes.pe%2F2022%2F07%2FCentral.jpg&w=3840&q=75");
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  border-radius: 1rem;
+}

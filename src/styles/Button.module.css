@@ -1,0 +1,13 @@
+.button {
+  border-radius: 1rem;
+  padding: 0.8rem 1rem;
+  background: yellow;
+  color: black;
+  min-width: 10rem;
+  border: none;
+  font-weight: bold;
+}
+.button:hover {
+  background: rgb(110, 96, 20);
+  color: white;
+}
