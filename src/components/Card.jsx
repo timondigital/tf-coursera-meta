@@ -1,16 +1,21 @@
 import React from "react";
+import styles from "../styles/Card.module.css";
 
 const Card = ({ ...props }) => {
   const { title, price, text, img } = props;
   return (
-    <div className="content">
-      <img src={img} alt="" />
-      <div className="">
-        <h2>{title}</h2>
-        <h2>{price}</h2>
+    <div className={styles.content}>
+      <div className={styles.imgContent}>
+        <img src={img} alt={title} className={styles.img} />
       </div>
-      <p>{text}</p>
-      <p>Envios a domicilio</p>
+      <div className={styles.contentInfo}>
+        <div className={styles.header}>
+          <h2 className={styles.title}>{title}</h2>
+          <h2 className={styles.price}>$ {price}</h2>
+        </div>
+        <p className={styles.text}>{text}</p>
+        <p className={styles.footer}>Envios a domicilio</p>
+      </div>
     </div>
   );
 };

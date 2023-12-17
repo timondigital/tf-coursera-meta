@@ -3,9 +3,19 @@ header {
   align-items: center;
   justify-content: space-between;
   margin: auto;
-  padding: 0 2rem;
+  padding: 0 2rem 0;
+  max-width: 1000px;
 }
 
 .img {
   width: 20%;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+  .img {
+    width: 50%;
+  }
 }

@@ -1,0 +1,42 @@
+.promo {
+  height: auto;
+  width: 100%;
+  max-width: 900px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: auto;
+}
+.promoHeader {
+  flex-direction: column;
+  gap: 2rem;
+}
+.promo > h2 {
+  margin: auto;
+}
+.contentCard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .promo h2 {
+    margin: 0;
+  }
+
+  .promoHeader {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+}
