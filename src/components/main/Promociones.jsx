@@ -6,14 +6,14 @@ import pizza from "../../imagenes/pizza.jpg";
 import burger from "../../imagenes/burger.jpg";
 import hotdog from "../../imagenes/hotDog.webp";
 
-const Promociones = () => {
+const Reservas = () => {
   return (
     <div className={styles.promo}>
       <div className={styles.promoHeader}>
         <h2>Promociones</h2>
         <Button text="Online Menu" />
       </div>
-      <div className={styles.contentCard}>
+      <div className={styles.contentCard} id="promos">
         <Card
           title="HotDog"
           price="5.00"
@@ -43,4 +43,4 @@ const Promociones = () => {
   );
 };
 
-export default Promociones;
+export default Reservas;

@@ -2,17 +2,18 @@
   background: green;
   display: flex;
   padding: 1rem 10vw;
-  position: relative;
-
+  position: absolute;
   width: 100vw;
-  right: 10vw;
+  height: 200px;
+  right: 0;
 }
 .contentInfo {
   margin: auto;
   position: relative;
   width: 80%;
   max-width: 900px;
-  right: 10vw;
+  margin-bottom: 2rem;
+  padding-top: 10px;
 }
 .info {
   width: 40%;
@@ -41,7 +42,7 @@ p {
 }
 
 @media (min-width: 600px) {
-  .nosotros {
+  .contentInfo {
     margin-bottom: 7rem;
   }
   .img {

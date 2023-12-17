@@ -4,7 +4,8 @@ import Button from "../Button";
 
 const Nosotros = () => {
   return (
-    <div className={styles.nosotros}>
+    <>
+      <div className={styles.nosotros}></div>
       <div className={styles.contentInfo}>
         <div className={styles.info}>
           <h2 className={styles.h2}>Little Lemon</h2>
@@ -17,7 +18,7 @@ const Nosotros = () => {
         </div>
         <div className={styles.img}></div>
       </div>
-    </div>
+    </>
   );
 };
 
