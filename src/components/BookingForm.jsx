@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-const BookingForm = () => {
+import styles from "../styles/BookingForm.module.css";
+
+const BookingForm = ({ availableTimes, updateTimes }) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("17:00");
   const [guests, setGuest] = useState(0);
@@ -10,6 +12,7 @@ const BookingForm = () => {
     // Implement this function
     return date && time && guests && occasion;
   };
+
   const clearForm = () => {
     setDate("");
     setTime("");
@@ -24,6 +27,7 @@ const BookingForm = () => {
     alert("Reserva creada exitosamente!");
     clearForm();
   };
+
   return (
     <>
       <form
@@ -46,12 +50,13 @@ const BookingForm = () => {
         />
         <label htmlFor="res-time">Hora</label>
         <select id="res-time " onChange={(e) => setTime(e.target.value)}>
-          <option>17:00</option>
-          <option>18:00</option>
-          <option>19:00</option>
-          <option>20:00</option>
-          <option>21:00</option>
-          <option>22:00</option>
+          {availableTimes?.map((time, i) => {
+            return (
+              <option key={i} value={time}>
+                {time}
+              </option>
+            );
+          })}
         </select>
         <label htmlFor="guests">Numero de personas</label>
         <input
@@ -67,8 +72,13 @@ const BookingForm = () => {
           <option>cumpleaños</option>
           <option>aniversario</option>
         </select>
-        <button type="submit" disabled={!getIsFormValid()}>
-          Enviar reservacion
+        <button
+          type="submit"
+          disabled={!getIsFormValid()}
+          className={styles.button}
+          data-testid="button-send"
+        >
+          Enviar reservación
         </button>
       </form>
     </>

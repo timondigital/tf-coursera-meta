@@ -1,0 +1,11 @@
+.button {
+  background: yellow;
+  color: green;
+  font-weight: bold;
+  border: none;
+}
+
+.button:disabled {
+  background: gray;
+  color: white;
+}
