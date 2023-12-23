@@ -17,7 +17,9 @@ function App() {
     "21:00",
     "22:00",
   ]);
+  const today = new Date();
 
+  const initializeTimes = () => {};
   const updateTimes = () => {
     setAvailableTimes(availableTimes);
   };
