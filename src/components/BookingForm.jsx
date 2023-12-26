@@ -1,32 +1,60 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import styles from "../styles/BookingForm.module.css";
 
-const BookingForm = ({ availableTimes, updateTimes }) => {
+const BookingForm = ({
+  availableTimes,
+  dispatchAvailableTimes,
+  loading,
+  handleSubmit,
+}) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("17:00");
   const [guests, setGuest] = useState(0);
   const [occasion, setOccasion] = useState("cumpleaños");
 
-  const getIsFormValid = () => {
-    // Implement this function
-    return date && time && guests && occasion;
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isValidate, setIsValidate] = useState(false);
+
+  const handleInputChange = (id, value) => {
+    setDate(value);
+
+    if (id === "date") {
+      dispatchAvailableTimes({ type: "SET_TIMES", payload: value });
+
+      const selectedDate = new Date(value + "T00:00:00");
+      const today = new Date();
+
+      // Set the time of both dates to 00:00:00
+      selectedDate.setHours(0, 0, 0, 0);
+      today.setHours(0, 0, 0, 0);
+
+      if (selectedDate.getTime() < today.getTime()) {
+        setErrorMessage("Selecciona una fecha que no sea del pasado.");
+        setIsValidate(false);
+      } else {
+        setErrorMessage("");
+        setIsValidate(true);
+      }
+    }
   };
 
-  const clearForm = () => {
-    setDate("");
-    setTime("");
-    setGuest("");
-    setOccasion("");
+  useEffect(() => {
+    const isFormValidate =
+      date !== "" &&
+      errorMessage === "" &&
+      time !== "" &&
+      guests !== 0 &&
+      occasion !== "";
 
-    // Implement this function
-  };
+    setIsValidate(isFormValidate);
+  }, [errorMessage, date, time, guests, occasion]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Reserva creada exitosamente!");
-    clearForm();
-  };
+  useEffect(() => {
+    if (loading) {
+      setIsValidate(false);
+    }
+  }, [loading]);
 
   return (
     <>
@@ -46,8 +74,9 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
         <input
           type="date"
           id="res-date"
-          onChange={(e) => setDate(e.target.value)}
+          onChange={(value) => handleInputChange("date", value.target.value)}
         />
+        {errorMessage && <p>{errorMessage}</p>}
         <label htmlFor="res-time">Hora</label>
         <select id="res-time " onChange={(e) => setTime(e.target.value)}>
           {availableTimes?.map((time, i) => {
@@ -74,7 +103,7 @@ const BookingForm = ({ availableTimes, updateTimes }) => {
         </select>
         <button
           type="submit"
-          disabled={!getIsFormValid()}
+          disabled={!isValidate}
           className={styles.button}
           data-testid="button-send"
         >
